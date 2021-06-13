@@ -66,7 +66,7 @@ package-lock.json
 *.gz
 
 # uploaded files
-uploads/
+# uploads/
 
 #everyone will have thier own db file
 db.js
