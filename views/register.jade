@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/register.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content
+        form(method='POST')
+          label(for='email')
+            b Email
+          input#email(type='email', placeholder='Enter Email', name='email', required='required')
+          label(for='psw')
+            b Password
+          input#psw(type='password', placeholder='Enter Password', name='psw', required='required')
+          label(for='pswrepeat' minlength="8")
+            b Repeat Password
+          input#pswrepeat(type='password', placeholder='Repeat Password', name='pswrepeat', required='required' minlength="8")
+          label(for='fname')
+            b Full Name
+          input#fname(type='text', placeholder='Enter Full Name', name='fname', required='required')
+          label(for='username')
+            b User Name
+          input#username(type='text', placeholder='Enter User Name', name='username', required='required')
+          label(for='phone')
+            b Phone Number
+          input#phone(type='text', placeholder='Enter Phone no.', name='phone')
+          label(for='country')
+            b Country
+          input#country(type='text', placeholder='Enter Country Name', name='country')
+          button(type='submit') Register
+          p Already have an account? 
+            a(href='/login') Login

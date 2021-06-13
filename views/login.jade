@@ -1,0 +1,26 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/login.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content
+        form(method='POST')
+          label(for='emailorusername')
+            b Email or User Name
+          input#emailorusername(type='text', placeholder='Enter Email or User name', name='emailorusername', required='required')
+          label(for='psw')
+            b Password
+          input#psw(type='password', placeholder='Enter Password', name='psw', required='required')
+          button(type='submit') Login
+          p Don't have an account yet? 
+            a(href='/register') Register

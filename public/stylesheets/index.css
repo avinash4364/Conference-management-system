@@ -1,0 +1,170 @@
+body {
+  background-image: url("/images/conference.jpg");
+  background-size: cover;
+  background-position: top;
+}
+
+main {
+  min-height: 50%;
+}
+
+/* .heading {
+  width: 100%;
+} */
+
+.logo {
+  position: absolute;
+  width: 100%;
+  padding: 1rem;
+  height: 20rem;
+}
+
+h1 {
+  height: 11rem;
+}
+
+.logo img {
+  width: 7%;
+  padding: 1rem;
+}
+
+.account {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+  height: 10rem;
+  width: 100%;
+}
+
+.account p {
+  font-size: 3.5rem;
+  margin: 1rem 0;
+}
+
+.authorised {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.authorised button {
+  display: inline;
+  width: fit-content;
+}
+
+.authorised ul li {
+  list-style: none;
+}
+
+.conferences {
+  display: flex;
+  width: 100%;
+}
+
+.conference {
+  padding: 1rem 0.7rem;
+  background-color: #f1faee;
+  color: #222831;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: fit-content;
+}
+
+.conference a {
+  color: #fa003f;
+  font-weight: 700;
+}
+
+.conference a::after {
+  transition: none;
+}
+
+.conference a:hover::after {
+  height: 0;
+}
+
+.conference .title {
+  background-color: #9f86c0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  transition: all 0.3s ease-out;
+  z-index: 1;
+}
+
+.conference .title li {
+  color: #ffff;
+  z-index: 2;
+}
+
+.conference .topic {
+  text-align: center;
+}
+
+.non-conference {
+  display: block;
+}
+
+.conference .title:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  cursor: pointer;
+}
+
+.reviewer {
+  padding: 1rem 0.7rem;
+  background-color: #9f86c0;
+  margin: 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: fit-content;
+  transition: all 0.5s;
+  transition-timing-function: ease-out;
+}
+
+.reviewer:hover {
+  transform: translateY(-0.25rem);
+  box-shadow: 0 0.5em 0.5em -0.4em;
+}
+
+.reviewer li {
+  color: #fff;
+}
+
+.reviewer a {
+  color: #fa003f;
+  font-weight: 700;
+}
+
+.reviewer a::after {
+  transition: none;
+}
+
+.reviewer a:hover::after {
+  height: 0;
+}
+
+/* pending */
+
+.pending p {
+  display: inline;
+}
+
+.loader {
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  margin: 0 auto 1em;
+  display: inline;
+  vertical-align: top;
+}
+/*
+  Set the color of the icon
+*/
+svg path,
+svg rect {
+  fill: #e0fbfc;
+}

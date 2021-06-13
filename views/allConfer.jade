@@ -1,0 +1,55 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/allconfer.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+
+      block content
+        if authorised
+          .all-conference
+          p Welcome 
+          p Exit From This Page :  
+            a(href=`/?id=${id}`)  Back
+          
+          if exist != ""
+            p #{exist}
+
+          if typeof allConf != 'undefined' && allConf.length!=0
+            p.list List of Conferences you can Join
+            ul
+            each conf in allConf
+              .conference
+                ul 
+                  li #{conf.conf_name} on topic:- #{conf.topic}
+            
+            form(method='POST')
+              label(for='NameOfConf')
+                b Conference Name
+              input#NameOfConf(type='text', placeholder='Enter Name Of Conference You Want To Join', name='NameOfConf', required='required')
+              label(for="role")
+                b Choose Role 
+              input#role(type="text",placeholder='Enter Role(Author or Reviewer only)' name='role' required='required')
+              //- label(for='role')
+              //-   b Role
+              //- input#role(type='text', placeholder='Enter Role(Chair or Reviewer only)', name='role', required='required')
+              button(type='submit') Request To Join
+              p Create a new Conference | 
+                a(href='/conference') New Conference   
+                
+          else 
+            p No more conferences for you to join
+              
+
+          
+
+        

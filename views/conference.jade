@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/conference.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content
+      if authorised
+        p Welcome 
+        p Exit From This Page :   
+          a(href="/")  Back
+      form(method='POST')
+        label(for='confName')
+          b Conference Name
+        input#confName(type='text', placeholder='Enter Conference Name', name='confName', required='required')
+        label(for='startdate')
+          b Start Date
+        input#startdate(type='date', placeholder='Enter starting date', name='startdate' required='required')
+        label(for='endate')
+          b End Date
+        input#enddate(type='date', placeholder='Enter end date', name='enddate', )
+        label(for='venueOfconf')
+          b Venue
+        input#venueOfconf(type='text', placeholder='Enter Venue', name='venueOfconf', required='required')
+        label(for='organiserName')
+          b Organiser 
+        input#organiserName(type='text', placeholder='Enter Name Of Organiser', name='organiserName', required='required')
+        //- label(for='UserID')
+        //-   b UserID 
+        //- input#UserID(type='text', placeholder='Enter Your User ID Given Above', name='UserID', required='required')
+        label(for='topic')
+          b Topic 
+        input#topic(type='text', placeholder='Choose topic of your conference', name='topic')
+        button(type='submit') Add Conference 

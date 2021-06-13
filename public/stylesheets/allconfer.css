@@ -1,0 +1,44 @@
+body {
+  background-image: url("/images/videoconference.svg");
+  background-size: contain;
+  background-position: center;
+}
+
+.all-conference {
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.all-conference ul {
+  padding: 1rem 0;
+  list-style: inside decimal;
+}
+
+.list {
+  background-color: #fa003f;
+  border-radius: 0.5rem;
+  color: #f1faee;
+  font-weight: 700;
+  width: max-content;
+  padding: 0.5rem;
+  margin: 1rem 0;
+}
+
+.conference {
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0.5rem;
+  width: max-content;
+  padding: 0.5rem;
+  font-weight: 700;
+  background-clip: text;
+  color: #f1faee;
+  margin: 1rem 0;
+}
+
+.conference ul {
+  list-style: square inside;
+}
+
+.conference ul li {
+  text-transform: capitalize;
+}

@@ -1,0 +1,94 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/conf_detail.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content
+        if authorised
+          p Welcome 
+          p Exit From This Page :  
+            a(href=`/?id=${id}`)  Back
+          if typeof confs != 'undefined'
+            .conf_details
+              p Conference details: 
+              ul
+                li 
+                  b Name: 
+                  span #{confs[0].conf_name} 
+                li 
+                  b Starting Date: 
+                  span #{confs[0].start_date} 
+                li 
+                  b Ending Date: 
+                  span #{confs[0].end_date}   
+                li 
+                  b Venue: 
+                  span #{confs[0].venue}
+            p.submitted All submitted papers 
+            .all-paper
+              if confs.length>1
+                - let submitted=false;
+                .papers
+                  - for(let i=1;i<confs.length;i++)
+                      -var count=0;
+                      if confs[i].end_date.includes('.pdf')
+                        - submitted = true
+                          .paper
+                            ul
+                              li Title: #{confs[i].conf_name}
+                              li Topic: #{confs[i].start_date}
+                            - var link=`/uploads/${confs[i].end_date}`;
+                              a(href=link) 
+                                .paper-logo 
+                                  img(src="/images/paper1.svg", alt="no paper logo displayed")
+                              br
+                              a(href=link download class="download") download
+                              br
+                              if papers.length>0 && isReviewer==true
+                                if papers.includes(confs[i].venue)
+                                  a(href=`/review/?paper_id=${confs[i].venue}`) Review
+                      else 
+                        .request 
+                          if confs[i].venue=="pending" && !confs[i].end_date.includes('.pdf')
+                              p #{confs[i].start_date} has requested to join your conference as an #{confs[i].end_date}.                  
+                              form(method="post")
+                                input(type="hidden", name="id" value='#{confs[i].conf_name}')
+                                input#accept(type="radio", name="request" value="accepted") 
+                                label(for="accept" class="accept") Accept Request
+                                br
+                                input#decline(type="radio", name="request" value="rejected")
+                                label(for="decline" class="decline") Decline Request
+                                button(type="submit") Send 
+                - var submit=false;
+                - for(let i=1;i<confs.length;i++)
+                    if confs[i].end_date=="reviewer" && confs[i].venue=="accepted"
+                      - submit = true
+
+                  if submit==false
+                    .not-paper
+                      ul
+                        if submitted==false
+                          li No paper submitted
+                      p Submit a Paper :
+                        a(href='/submitFile?conf_id=#{conf_id}') Submit
+                  else
+                    .not-paper
+                      P You can only review submitted papers here.
+
+              else 
+                .last
+                  ul
+                    li No paper submitted
+                    p Submit a Paper :
+                      a(href='/submitFile?conf_id=#{conf_id}')  Submit
+

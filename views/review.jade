@@ -1,0 +1,73 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/review.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content
+        if authorised
+          p Welcome 
+          p Exit From This Page :
+            if typeof confs!= 'undefined'
+              a(href=`/conf_detail?conf_id=${confs[0].conf_id}`)  Back
+            else 
+              a(href=`/?id=${id}`)  Back
+          form(method='POST')
+            label(for='pg')
+              b Check plagirism
+            select#pg(name="plagirism")
+                option(value="1") plagiarised
+                option(value="0") Original Work
+
+            label(for='rv')
+              b Relevancy of the content 
+              select#rv(name="relevancy") 
+                option(value="1") Off topic
+                option(value="2" selected="selected") Somewhat Relevant
+                option(value="3") Relevant
+
+            label(for='pp')
+              b Presentation of the content 
+              select#pp(name="presentation") 
+                option(value="1") Very Poor
+                option(value="2") Poor
+                option(value="3" selected="selected") Fair
+                option(value="4") Good
+                option(value="5") Excellent
+
+            label(for='og')
+              b Originality of the content 
+              select#og(name="originality") 
+                option(value="1") Very Poor
+                option(value="2") Poor
+                option(value="3" selected="selected") Fair
+                option(value="4") Good
+                option(value="5") Excellent
+
+            label(for="nominate")
+              b Nominate for best paper award
+              select#nominate(name="nominate") 
+                option(value="1") Yes
+                option(value="0") No
+
+            input#accept(type="radio", name="status" value="accepted") 
+            label(for="accept") Accept the paper
+            br
+            input#decline(type="radio", name="status" value="rejected")
+            label(for="decline") Reject the paper
+            if typeof confs!= 'undefined'
+              input(type="hidden", name="id" value=`${confs[0].conf_id}`)
+            else 
+              input(type="hidden", name="id" value='0')
+
+            button(type='submit') Send report
+        

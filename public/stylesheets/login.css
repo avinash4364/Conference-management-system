@@ -1,0 +1,5 @@
+body {
+  background-image: url("/images/user.svg");
+  background-size: contain;
+  background-position: center;
+}

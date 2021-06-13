@@ -1,0 +1,44 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Document
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    link(rel="stylesheet", href="/stylesheets/submit.css")
+  body 
+    main
+      h1= title
+      if typeof messages != 'undefined'
+        each msg in messages
+          p= msg
+      block content 
+        if authorised
+          p Welcome 
+          p Exit From This Page :  
+            a(href=`/conf_detail?conf_id=${conf_id}`)  Back
+          form(method='POST' enctype="multipart/form-data")
+            label(for='title')
+              b Title of Paper
+            input#title(type='text', placeholder='Enter the paper title', name='paper_title', required='required')
+            label(for='topic')
+              b Topic 
+            input#topic(type='text', placeholder='Enter the related topic', name='topic', required='required')
+            label(for='abstract')
+              b Abstract
+            textarea#abstract(type='text', placeholder='Write an abstract in less than 100 words', name='abstract', required='required' maxlength='1000' rows="5")
+            .all-authors 
+            button.add Add author 
+            label(for="file")
+              b Choose a File 
+            input#file(type="file", name="file" required="required") 
+            button(type='submit') Submit
+          
+          script(src="./javascript/index.js") 
+
+
+
+
+
+
